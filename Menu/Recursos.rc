@@ -1,0 +1,13 @@
+#include<windows.h>
+#include "Api.h"
+
+MenuPrincipal MENU
+BEGIN
+    POPUP "Menu"
+    BEGIN
+        MENUITEM "Agregar",ID_Agregar
+        MENUITEM "Eliminar",ID_Eliminar
+        MENUITEM SEPARATOR
+        MENUITEM "Salir",ID_Salir
+    END
+END
