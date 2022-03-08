@@ -1,5 +1,6 @@
 #include <windows.h>
 #include <tchar.h>
+#include "Api.h"
 
 #define bt1 101
 
@@ -61,19 +62,23 @@ int WINAPI WinMain(HINSTANCE hThisInstance,
 
 LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam,LPARAM lParam){
 
-    switch(message){
-        case WM_DESTROY:
-            PostQuitMessage(0);
-            break;
-        case WM_CREATE:
-            break;
-        case WM_COMMAND:
-            switch(LOWORD(wParam)){
+    switch (message) {
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        break;
+    case WM_CREATE:
+        break;
+    case WM_COMMAND:
+        switch (LOWORD(wParam)) {
+            case ID_Eliminar:{
+                    MessageBox(hwnd,"Eliminar","Eliminar",MB_OK);
+                break;
             }
+        }
         break;
 
-        default:
-            return DefWindowProc(hwnd,message,wParam,lParam);
+    default:
+        return DefWindowProc(hwnd, message, wParam, lParam);
     }
     return 0;
 }

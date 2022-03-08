@@ -1,0 +1,19 @@
+#include<windows.h>
+#include "Api.h"
+
+MenuPrincipal MENU
+BEGIN
+    POPUP "Menu"
+    BEGIN
+        MENUITEM "Agregar",ID_Agregar
+        MENUITEM "Eliminar",ID_Eliminar
+        MENUITEM SEPARATOR
+        MENUITEM "Salir",ID_Salir
+    END
+END
+
+DlgAgregar DIALOG 10,10,300,200
+STYLE  DS_MODALFRAME|WS_SYSMENU
+BEGIN
+    CONTROL "Aceptar",IDOK,"BUTTON",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE|WS_TABSTOP,10,10,50,25
+END

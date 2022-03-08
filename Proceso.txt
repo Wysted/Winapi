@@ -1,0 +1,3 @@
+g++.exe -Wall -g  -c .cpp -o main.o
+windres.exe   -J rc -O coff -i .rc -o .res
+ g++.exe  -o *.exe *.o *.res 
