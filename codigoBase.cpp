@@ -1,8 +1,6 @@
 #include <windows.h>
 #include <tchar.h>
 
-#define bt1 101
-#define _WIN32_WINNT 0x0500
 
 LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam,LPARAM lParam){
     switch(message){
@@ -10,16 +8,12 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam,LPARAM l
             PostQuitMessage(0);
             break;
         case WM_CREATE:
-            //ws_visible: permite que el boton sea visible
-            CreateWindowEx(0,"button",("boton"),WS_VISIBLE|WS_CHILD|0,0,0,50,25,hwnd,(HMENU)bt1,0,0);
 
             break;
         case WM_COMMAND:
             switch(LOWORD(wParam)){
-            case bt1:
-                MessageBox(hwnd,"Me has hecho click :0","boton",MB_OK);
-                break;
-            }
+            
+        }
         break;
 
         default:
@@ -46,8 +40,8 @@ int WINAPI WinMain(HINSTANCE hThisInstance,
 
     //usa el icono y puntero por defecto
     wincl.hIcon = LoadIcon(NULL , IDI_APPLICATION); //icono que se ve desde carpeta
-    wincl.hIconSm = LoadIcon(NULL,IDI_ERROR); // icono desde la app
-    wincl.hCursor = LoadCursor(NULL,IDC_HELP); // cursor
+    wincl.hIconSm = LoadIcon(NULL,IDI_WINLOGO); // icono desde la app
+    wincl.hCursor = LoadCursor(NULL,IDC_ARROW); // cursor
     wincl.lpszMenuName = NULL;  // barra de menu
     wincl.cbClsExtra = 0;
     wincl.cbWndExtra = 0;
