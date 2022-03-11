@@ -29,8 +29,11 @@
             "name": "(Windows) Iniciar",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/Menu/main.exe",
-            "args": [],
+            "program": "${workspaceFolder}/main.exe",
+            "args": [
+                "C:\\Windows Kits\\8.1\\Lib\\winv6.3\\um\\x86",
+                "C:\\Windows Kits\\8.1\\Lib\\winv6.3\\um\\x64"
+            ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],

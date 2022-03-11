@@ -18,6 +18,15 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam,LPARAM l
             break;
         case WM_COMMAND:
             switch(LOWORD(wParam)){
+                case ID_REGISTRO:{
+                    DialogBox(instancia,"DlgRegistro",hwnd,dlgRegistroProc);
+                }
+                case ID_BUSCAR:{
+                    DialogBox(instancia,"DlgBuscar",hwnd,dlgBuscarProc);
+                }
+                case ID_SALIR:{
+                    SendMessage(hwnd,WM_CLOSE,0,0);
+                }
             }
         break;
 
@@ -69,8 +78,8 @@ int WINAPI WinMain(HINSTANCE hThisInstance,
                           hThisInstance,
                           NULL
                           );
-    ShowWindow(hwnd,nCmdShow);
-    ShowWindow(GetConsoleWindow( ),SW_HIDE);//oculta la cmd
+     ShowWindow(hwnd,nCmdShow);
+    //ShowWindow(GetConsoleWindow( ),SW_HIDE);//oculta la cmd
 
     while(GetMessage(&messages,NULL,0,0)){//provoca que la ventana no se cierre de manera instantanea
         TranslateMessage(&messages);
@@ -79,15 +88,12 @@ int WINAPI WinMain(HINSTANCE hThisInstance,
     return messages.wParam;
 }
 
-BOOL CALLBACK dlgAgregarProc(HWND hwnd,UINT mensaje,WPARAM wParam,LPARAM lParam){
+/*BOOL CALLBACK dlgAgregarProc(HWND hwnd,UINT mensaje,WPARAM wParam,LPARAM lParam){
 
     switch(mensaje){
         case WM_COMMAND:{
             switch(LOWORD(wParam)){
-                case IDOK:{
-                    MessageBox(hwnd,"Aceptar","Ejemplo",MB_OK);
-                    break;
-                }
+                
             }
             return TRUE;
         }
@@ -97,4 +103,4 @@ BOOL CALLBACK dlgAgregarProc(HWND hwnd,UINT mensaje,WPARAM wParam,LPARAM lParam)
         }
     }
     return FALSE;
-}
+}*/

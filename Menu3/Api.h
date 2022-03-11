@@ -1,9 +1,6 @@
 #ifndef API_H
 #define API_H
-
-#include<iostream>
-#include<string>
-#include<windows.h>
+#include<Windows.h>
 
 #define ID_SALIR 1000
 
@@ -28,9 +25,13 @@
 #define ID_AGREGAR 2000
 #define ID_ELIMINAR 2001
 #define ID_BUSCAR 2002
+#define ID_SIGUIENTE 2003
+#define ID_ANTERIOR 2004
 
 LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam,LPARAM lParam);
 BOOL CALLBACK dlgRegistroProc(HWND vent,UINT msg,WPARAM wParam,LPARAM lParam);
+BOOL CALLBACK dlgBuscarProc(HWND vent,UINT msg,WPARAM wParam,LPARAM lParam);
+
 
 BOOL registrarClase(UINT estilo,HINSTANCE instancia,WNDPROC wndProcedimiento,LPCSTR nombreMenu,LPCSTR clsNombre,int color);
 
