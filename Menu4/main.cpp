@@ -1,28 +1,10 @@
 #include <windows.h>
 #include <tchar.h>
+#include"Api.h"
 
+TCHAR szClassName[] = _T("Ventana principal");
+TCHAR AppName[] = _T("Curso winapi");
 
-LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam,LPARAM lParam){
-    switch(message){
-        case WM_DESTROY:
-            PostQuitMessage(0);
-            break;
-        case WM_CREATE:
-
-            break;
-        case WM_COMMAND:
-            switch(LOWORD(wParam)){
-            
-        }
-        break;
-
-        default:
-            return DefWindowProc(hwnd,message,wParam,lParam);
-    }
-    return 0;
-}
-
-TCHAR szClassName[ ] = _T("CodeBlockWindowsApp");
 
 int WINAPI WinMain(HINSTANCE hThisInstance,
                    HINSTANCE hPrevInstace,
@@ -30,26 +12,11 @@ int WINAPI WinMain(HINSTANCE hThisInstance,
                    int nCmdShow){
     HWND hwnd;
     MSG messages;
-    WNDCLASSEX wincl;
-    //Estructura de window
-    wincl.hInstance = hThisInstance;
-    wincl.lpszClassName = szClassName;
-    wincl.lpfnWndProc = WindowProcedure; //esta funcion es llamada por window
-    wincl.style = CS_DBLCLKS;
-    wincl.cbSize = sizeof(WNDCLASSEX);
 
-    //usa el icono y puntero por defecto
-    wincl.hIcon = LoadIcon(NULL , IDI_APPLICATION); //icono que se ve desde carpeta
-    wincl.hIconSm = LoadIcon(NULL,IDI_WINLOGO); // icono desde la app
-    wincl.hCursor = LoadCursor(NULL,IDC_ARROW); // cursor
-    wincl.lpszMenuName = NULL;  // barra de menu
-    wincl.cbClsExtra = 0;
-    wincl.cbWndExtra = 0;
-
-    wincl.hbrBackground = (HBRUSH) COLOR_BACKGROUND;
-
-    if(!RegisterClassEx(&wincl))
-        return 0;
+    if(!RegistrarClaseEx(CS_DBLCLKS,hThisInstance,szClassName,NULL,WindowProcedure,CreateSolidBrush(RGB(150,150,150)))){
+        MessageBox(NULL,"Error: Fallo al registrar la ventana",AppName,MB_OK|MB_ICONERROR);
+        return EXIT_FAILURE;
+    }
 
     hwnd = CreateWindowEx(0,
                           szClassName,
@@ -64,6 +31,7 @@ int WINAPI WinMain(HINSTANCE hThisInstance,
                           hThisInstance,
                           NULL
                           );
+
     ShowWindow(hwnd,nCmdShow);
     ShowWindow(GetConsoleWindow( ),SW_HIDE);//oculta la cmd
 

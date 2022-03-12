@@ -2,7 +2,8 @@ SOURCESCPP := $(wildcard *.cpp)
 SOURCESRC := $(wildcard *.rc)
 OBJECTS.O := $(subst .cpp,.o,$(SOURCESCPP))
 OBJECTS.RES := $(subst .rc,.res,$(SOURCESRC))
-OBJECTS += $(OBJECTS.O) $(OBJECTS.RES)
+OBJECTS += $(OBJECTS.O) $(OBJECTS.RES) $(LIB)
+LIB := ..\..\..\..\..\..\WindowsKits\8.1\lib\winv6.3\um\x86\Gdi32.lib
 
 
 
