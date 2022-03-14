@@ -25,12 +25,9 @@ LRESULT CALLBACK WindowProcedure(HWND ventana,UINT mensaje,WPARAM wParam,LPARAM 
 
         case WM_PAINT:{
             hdc = BeginPaint(ventana,&ps);
-            RECT rc;
-            rc.left = 10;
-            rc.right = 110;
-            rc.top = 10;
-            rc.bottom = 110;
-            FrameRect(hdc,&rc,NULL);
+            SelectObject(hdc,CreatePen(PS_SOLID,0,RGB(0,100,100)));
+            SelectObject(hdc,CreateSolidBrush(RGB(0,100,100))); 
+            Rectangle(hdc,ps.rcPaint.left,ps.rcPaint.top,ps.rcPaint.right,ps.rcPaint.bottom);
 
             EndPaint(ventana,&ps);
             break;
